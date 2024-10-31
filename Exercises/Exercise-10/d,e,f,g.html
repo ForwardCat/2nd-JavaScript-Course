@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./d.css">
+</head>
+<body>
+  <button class="js-button-on" onclick="toggleButton(this)">Gaming</button>
+  <button class="js-button-on" onclick="toggleButton(this)">Music</button>
+  <button class="js-button-on" onclick="toggleButton(this)">Tech</button>
+  <script>
+    function toggleButton(button) {
+      if(!button.classList.contains('js-button-off')) {
+        
+        turnOffPreviousButton();
+
+        button.classList.add('js-button-off');
+      } else {
+        button.classList.remove('js-button-off');
+      }
+    }
+
+    function turnOffPreviousButton() {
+      const previousButton = document.querySelector('.js-button-off')
+
+      if (previousButton) {
+        previousButton.classList.remove('js-button-off');
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input placeholder="text" class="input"  onkeyup="
+    updateScreen();
+  ">
+  <p class="js-react"></p>
+  <script>
+    function updateScreen() {
+      let text = document.querySelector('.input')
+
+      document.querySelector('.js-react')
+        .innerHTML = text.value;
+    }
+  </script>
+</body>
+</html>

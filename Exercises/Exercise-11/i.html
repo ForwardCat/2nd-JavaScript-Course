@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const myArray = [1, 2, 3];
+    const randomArray = [10, 20, 30];
+
+    function addNum(array, num) {
+      let returnedArray = [];
+
+      for (let i = 0; i < array.length; i ++) {
+        const number = array[i];
+        returnedArray.push(number + num);
+      }
+      return returnedArray;
+    }
+    console.log(addNum(myArray, 2));
+    console.log(addNum(randomArray, 10));
+  </script>
+</body>
+</html>

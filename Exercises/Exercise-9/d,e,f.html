@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input placeholder="Name" class="js-name" onkeydown="
+    pressEnter(event)
+  ">
+  <button onclick="
+    displayName();
+  ">Submit</button>
+
+  <p class="output"></p>
+    
+  <script>
+    // function to display name as text
+    function displayName() {
+      const name = document.querySelector('.js-name');
+
+      document.querySelector('.output')
+        .innerHTML = `Your Name is: ${name.value}`
+    }
+
+    // function to run function after pressing enter
+    function pressEnter(event) {
+      if (event.key === 'Enter') {
+        displayName();
+      }
+    }
+  </script>
+</body>
+</html>

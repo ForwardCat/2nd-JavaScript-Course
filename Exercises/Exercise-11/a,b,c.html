@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const nums = [10, 20, 30];
+    nums[2] = 99;
+    console.log(nums);
+
+    const randomArray = [
+      'hello', 
+      'hi there'
+    ];
+
+    function getLastValue(array) {
+      console.log(array[array.length-1])
+    }
+    getLastValue(nums);
+    getLastValue(randomArray);
+
+    function arraySwap(array) {
+      const temporary = array[0];
+      array[0] = array[array.length - 1];
+      array[array.length - 1] = temporary;
+      return array;
+    }
+    console.log(arraySwap(randomArray));
+    console.log(arraySwap(nums));
+  </script>
+</body>
+</html>

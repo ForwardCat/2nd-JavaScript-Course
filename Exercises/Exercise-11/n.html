@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const randomWords = ['apple', 'banana', 'apple'];
+
+    function countWords(words) {
+      const count = {};
+
+      for (let i = 0; i < words.length; i ++) {
+        const word = words[i];
+
+        if (count[word]) {
+          count[word]++;
+        } else {
+          count[word] = 1;
+        }
+      } 
+      
+      return count;
+    }
+    console.log(countWords(randomWords));
+  </script>
+</body>
+</html>

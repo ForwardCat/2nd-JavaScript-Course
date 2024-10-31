@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button class="js-button">Start</button>
+  <script>
+    const button = document.querySelector('.js-button')
+    button.addEventListener('click', () => {
+      toggleButton();
+    });
+
+    function toggleButton() {
+      const button = document.querySelector('.js-button')
+      button.innerHTML = 'Loading...'
+
+      setTimeout(() => {
+        button.innerHTML = 'Finished!';
+      }, 2000);      
+    }
+  </script>
+</body>
+</html>

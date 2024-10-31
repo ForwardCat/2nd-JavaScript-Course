@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>App</title>
+  </head>
+  <body>
+    <button onclick="
+      addMessage();
+    ">Add</button>
+
+    <button onclick="
+      removeMessage();
+    ">Remove</button>
+
+    <script>
+      let messages = 0; 
+      let intervalID;
+
+      function updateTitle() {
+        document.title = document.title === 'App' ? `(${messages}) Messages` : 'App';      
+      }
+
+
+      function startTitleInterval() {
+        if (!intervalID) {
+          intervalID = setInterval(updateTitle, 1000);
+        }        
+      }
+
+      function stopTitleInterval() {
+        clearInterval(intervalID);
+        intervalID = '';
+        document.title = 'App';        
+      }
+
+      function addMessage() {
+        messages++;
+        if(messages === 1) {
+          startTitleInterval();
+        }
+      }
+
+      function removeMessage() {
+        if (messages > 0) {
+          messages--
+        } 
+        if (messages === 0) {
+          stopTitleInterval();
+        }
+      }
+
+
+    </script>
+  </body>
+</html>

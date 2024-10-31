@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <script>
+      function findIndex(array, word) {
+        for (let i = 0; i < array.length; i++) {
+          if (array[i] === word) {
+            return i;
+          }
+        }
+        return -1;
+      }
+
+      function unique(array) {
+        const results = [];
+
+        for (let i = 0; i < array.length; i++) {
+          const item = array[i];
+          if (findIndex(results, item) === -1) {
+            results.push(item);
+          }          
+        }
+
+        return results;
+      }
+
+      const randomArray = ['a', 'b', 'a', 'c'];
+      console.log(unique(randomArray));
+    </script>
+  </body>
+</html>

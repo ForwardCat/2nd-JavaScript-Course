@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App</title>
+</head>
+<body>
+  <button class="js-add-button">add</button>
+  <button class="js-remove-button">remove</button>
+  <script>
+    const addButton = document.querySelector('.js-add-button')
+    addButton.addEventListener('click', () => {
+      addMessages();
+    });
+
+    const removeButton = document.querySelector('.js-remove-button')
+    removeButton.addEventListener('click', () => {
+      removeMessages();
+    })
+
+    let isOriginalTitle = true;
+    let messages = 2;
+    let intervalID;
+
+    function renderSwap() {
+      intervalID = setInterval(() => {
+        if (isOriginalTitle) {
+          document.title = `(${messages}) New messages`;
+          isOriginalTitle = false;
+        } else {
+          document.title = 'App';
+          isOriginalTitle = true;
+        }
+      }, 1000);
+    }
+
+    function addMessages() {
+      if (messages === 0) {
+        renderSwap();  // Start a new interval only if messages were previously 0
+      }
+      messages++;
+    }
+
+    function removeMessages() {
+      if (messages > 0) {
+        messages--;
+      }
+      
+      if (messages === 0) {
+        clearInterval(intervalID);  // Stop the interval if there are no messages
+        document.title = 'App';
+      }
+    }
+
+    // Start the interval initially
+    renderSwap();
+  </script>
+</body>
+</html>

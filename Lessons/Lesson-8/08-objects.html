@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+    const product = {
+      name: 'socks',
+      price: 1090
+    };
+    console.log(product);
+    console.log(product.name);
+    console.log(product.price);
+
+    product.name = 'cotton socks';
+    console.log(product);
+
+    product.newProperty = true;
+    console.log(product);
+
+    delete product.newProperty;
+    console.log(product);
+    */
+
+    /*
+    const product2 = {
+      name: 'shirt',
+      ['delivery-time']: '1 day',
+      rating: {
+        stars: 4.5,
+        count: 87
+      },
+      // a function inside an object is called a 'METHOD'
+      // console.log for example, is a method
+      fun: function function1 () {
+        console.log('function inside object');
+      }
+    };
+    console.log(product2);
+    console.log(product2.name);
+    console.log(product2['name']);
+    console.log(product2['delivery-time']);
+    console.log(product2.rating.stars);
+    product2.fun();
+
+    // JSON.stringify is a method
+    // converts everything to a string.
+    console.log(JSON.stringify(product2));
+
+
+    const jsonString = JSON.stringify(product2);
+    console.log(JSON.parse(jsonString));
+    */
+
+
+
+    // auto-boxing
+    // JS wraps the string in an object, so you can use functions with them
+    console.log('hello'.length);
+    console.log('hello'.toUpperCase());
+
+    // objects are references, it points to the actual contents of the object
+    const object1 = {
+      message: 'hello'
+    };
+    // copies the reference, not the contents of the object
+    const object2 = object1;
+
+    // you can change the contents of the object dispite of const because its the object is a reference
+    object1.message = 'Good Job!';
+    console.log(object1);
+    // object2's contents are also changed because they're just references
+    console.log(object2);
+
+    // object1 and object3 has the same contents
+    const object3 = {
+      message: 'Good Job!'
+    };
+    // this outputs false dispute the fact that they have the same contents
+    // this is because they're references, and theyre a different reference
+    console.log(object1 === object3);
+    // this is true because they have the same reference
+    console.log(object2 === object1);
+
+    const object4 = {
+      message: 'Good Job!',
+      price: 799
+    };
+    // const message = object4.message;
+    const { message, price } = object4;
+    console.log(message);
+    console.log(price);
+
+    const object5 = {
+      // message: message
+      message,
+      /*
+      method: function function1() {
+        console.log('method');
+      }
+      */
+      method() {
+        console.log('method')
+      }
+    };
+    console.log(object5);
+    object5.method();
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const arrayOfFoods = [
+      'egg',
+      'apple',
+      'egg',
+      'milk',
+      'egg'
+    ];
+
+    function removeEgg(foodsArray) {
+      let eggsRemoved = 0;
+
+      return foodsArray.filter((value) => {
+        if (value === 'egg' && eggsRemoved < 2) {
+          eggsRemoved ++;
+          return false;
+        }
+        return true;
+
+        // if (eggsRemoved === 2) {
+        //   return value;
+        // } else {
+        //   if (value !== 'egg') {
+        //     eggsRemoved ++;
+        //     return value;
+        //   }          
+        // }
+
+      });
+    }
+    console.log(removeEgg(arrayOfFoods));
+  </script>
+</body>
+</html>

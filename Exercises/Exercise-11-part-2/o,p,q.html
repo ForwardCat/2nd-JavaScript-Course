@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const myArray = [
+      'search',
+      'random',
+      'word',
+      'search'
+    ];
+
+    function findIndex(array, word) {
+      let found = false
+      for (let i = 0; i < array.length; i++) {
+        let wordSearch = array[i];
+        if (wordSearch === word) {
+          console.log(i);
+          found = true;
+        } 
+      }
+      if (!found) {
+        console.log(-1);
+      }    
+    }
+
+    findIndex(myArray, 'random');
+  </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const randomNumbers = [1, 2, 5]
+
+    function minMax(nums) {
+      if (nums.length === 0) {
+        return { min: null, max: null };
+      }
+
+      const result = {
+        min: nums[0],
+        max: nums[0]
+      };
+
+      for(let i = 0; i < nums.length; i++) {
+        const number = nums[i];
+        
+        if (number < result.min) {
+          result.min = number;
+        }
+
+        if (number > result.max) {
+          result.max = number;
+        }
+      } return result;
+    }
+    console.log(minMax(randomNumbers));
+    console.log(minMax([]));
+    console.log(minMax([3]));
+  </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function isSameProduct(product1, product2) {
+      if(product1.name === product2.name && product1.price === product2.price) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    const shoes = {
+      name: 'Nike super fancy shoes',
+      price: 10000
+    }
+
+    const shoes2 = {
+      name: 'Nike super fancy shoes',
+      price: 10000
+    }
+
+    console.log(isSameProduct(shoes, shoes2));
+
+
+    const allLowerCase = 'GOOD MORNING'.toLowerCase();
+    console.log(allLowerCase);
+
+    const repeat = 'text'.repeat(2);
+    console.log(repeat);
+
+  </script>
+</body>
+</html>

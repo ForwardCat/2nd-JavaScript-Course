@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const array1 = [1, 2, 3];
+    const array2 = [2, 2, 5];
+
+    // function addArrays(array1, array2) {
+    //   let combined = [];
+
+    //   for (let i = 0; i < array1.length; i ++) {
+    //     const arrayOne = array1[i];
+    //     const arrayTwo = array2[i];
+
+    //     combined.push(arrayOne + arrayTwo);
+    //   } return combined;
+    // }
+    // console.log(addArrays(array1, array2));
+
+
+    function addArraysTwo(array1, array2) {
+      let combined = [];
+
+      for (let i = 0; i < array1.length; i ++) {
+        combined.push(array1[i] + array2[i]);
+      } return combined;
+    }
+    console.log(addArraysTwo(array1, array2));
+  </script>
+</body>
+</html>

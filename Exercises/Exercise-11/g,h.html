@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // let arrayPlus = [];
+
+    // for (let i = 0; i < myArray.length; i ++) {
+    //   const num = myArray[i];
+    //   arrayPlus.push(num + 1);
+    // }
+    // console.log(arrayPlus);
+
+    const myArray = [1, 2, 3];
+    const newArray = [10, 20, 30];
+
+    function addOne(array) {
+      let arrayPlus = [];
+
+      for (let i = 0; i < array.length; i++) {
+        const num = array[i];
+        arrayPlus.push(num + 1);
+      }
+      console.log(arrayPlus);
+    }
+    addOne(myArray);
+    addOne(newArray);
+  </script>
+</body>
+</html>

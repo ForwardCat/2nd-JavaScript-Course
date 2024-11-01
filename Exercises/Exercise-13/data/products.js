@@ -656,5 +656,31 @@ const products = [
       "apparel",
       "mens"
     ]
+  }, {
+    id: '0001',
+    image: "images/products/Kit.jpg",
+    name: "Manchester United 24/25 Home Kit",
+    rating: {
+      stars: 5,
+      count: 9999
+    },
+    priceCents: 70000,
+    keywords: [
+      'football-kit',
+      'football',
+      'iconic'
+    ]
+  }, {
+    id: '0002',
+    image: "images/products/ManU-Kit-99.webp",
+    name: "Manchester United 98/99 Home Kit",
+    rating: {
+      stars: 5,
+      count: 9193
+    },
+    priceCents: 100000,
+    keywords: [
+      'legendary'
+    ]
   }
 ];

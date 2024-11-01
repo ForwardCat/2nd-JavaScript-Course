@@ -61,6 +61,8 @@ products.forEach((product) => {
 document.querySelector('.js-products-grid')
   .innerHTML = productsHTML;
 
+  const addedMessageTimeouts = {};
+
 // Add to cart functionality
 document.querySelectorAll('.js-add-to-cart')
   .forEach((button) => {
@@ -97,5 +99,16 @@ document.querySelectorAll('.js-add-to-cart')
       // Show the added checkmark
       const addMessage = document.querySelector(`.js-added-to-cart-${productId}`);
       addMessage.classList.add('added-to-cart-visible');
+
+      const previousTimeoutId = addedMessageTimeouts[productId];
+      if (previousTimeoutId) {
+        clearTimeout(previousTimeoutId)
+      }
+
+      const timeoutId = setTimeout(()=> {
+        addMessage.classList.remove('added-to-cart-visible')
+      },2000)
+
+      addedMessageTimeouts[productId] = timeoutId;
     });
   });

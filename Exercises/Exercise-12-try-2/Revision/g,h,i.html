@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App</title>
+</head>
+<body>
+  <button class="js-add-button">Add</button>
+  <button class="js-remove-button">Remove</button>
+
+  <script>
+    // save the buttons in a variable
+    const addButton = document.querySelector('.js-add-button')
+    const removeButton = document.querySelector('.js-remove-button')
+
+    // give buttons a function with addEventListener
+    addButton.addEventListener('click', () => {
+      addMessage();
+    });
+    removeButton.addEventListener('click', () => {
+      removeMessage();
+    });
+
+    // messages variable outside of function bc we dont want it to go back to 2
+    let messages = 2;
+    let IntervalID;
+
+    function renderTitle () {
+      IntervalID = setInterval(() => {
+        if (document.title === 'App') {
+          document.title = `(${messages}) Messages`      
+        } else {
+          document.title = 'App'
+        }
+      }, 1000);      
+    }
+
+    // function to addMessage
+    // renderTitle when we have more than one message
+    function addMessage () {
+      if (messages === 0) {
+        renderTitle();      
+      }  
+      messages++;  
+    }
+    // function to removeMessage
+    // dont let messages to go below 0 and stop the interval when it is 0
+    function removeMessage () {
+      if (messages > 0) {
+        messages--;
+      }
+      if (messages === 0) {
+        clearInterval(IntervalID);
+        document.title = 'App';
+      }
+    }
+    // render the title at the start
+    renderTitle();
+  </script>
+</body>
+</html>

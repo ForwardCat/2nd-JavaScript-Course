@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const randomArray = [0, -1, -2, 1, 2, 3];
+
+    function countPositives (nums) {
+      let count = 0;
+      nums.forEach((number) => {
+        if(number > 0) {
+          count++;
+        } 
+      });
+      return count;
+    }
+    console.log((countPositives(randomArray)));
+
+    
+  </script>
+</body>
+</html>

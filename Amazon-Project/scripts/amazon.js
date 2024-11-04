@@ -1,6 +1,8 @@
+// getting variable out of module
+import {cart} from '../data/cart.js';
+
 // data of product
 // this is called a data structure
-
 let productsHTML = '';
 
 // generating HTML

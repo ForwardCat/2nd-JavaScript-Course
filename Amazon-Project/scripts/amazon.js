@@ -1,5 +1,6 @@
 // getting variable out of module
 import {cart} from '../data/cart.js';
+import {products} from '../data/products.js';
 
 // data of product
 // this is called a data structure

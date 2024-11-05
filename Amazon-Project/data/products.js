@@ -1,5 +1,34 @@
 export const products = [
   {
+    id: "0001",
+    image: "images/products/IMG_2529.JPG",
+    name: "Manchester United 98/99 Home Kit",
+    rating: {
+      stars: 5,
+      count: 9193
+    },
+    priceCents: 99999,
+    keywords: [
+      "Football",
+      "Iconic",
+      "Football Kit"
+    ]
+  },
+  {
+    id: "0002",
+    image: "images/products/IMG_2530.JPG",
+    name: "Manchester United 24/25 Home Kit",
+    rating: {
+      stars: 5,
+      count: 9762
+    },
+    priceCents: 70000,
+    keywords: [
+      "Football",
+      "Football Kit"
+    ]
+  },
+  {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
     image: "images/products/athletic-cotton-socks-6-pairs.jpg",
     name: "Black and Gray Athletic Cotton Socks - 6 Pairs",

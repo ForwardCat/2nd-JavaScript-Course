@@ -1,5 +1,5 @@
 // getting variable out of module
-import {cart, addToCart} from '../data/cart.js';
+import {cart, addToCart, calculateCartQuantity} from '../data/cart.js';
 import {products} from '../data/products.js';
 import { formatCurrency } from './utils/money.js';
 
@@ -67,17 +67,16 @@ document.querySelector('.js-products-grid')
   .innerHTML = productsHTML;
 
 function updateCartQuantity() {
-  let cartQuantity = 0;
-
-  cart.forEach((cartItem) =>{
-    cartQuantity += cartItem.quantity;
-  });
+  const cartQuantity = calculateCartQuantity();
 
   document.querySelector('.js-cart-quantity')
     .innerHTML = cartQuantity;
-  
-  
 }
+
+updateCartQuantity();
+
+// Define addedMessageTimeouts outside the event listener
+const addedMessageTimeouts = {};
 
 document.querySelectorAll('.js-add-to-cart')
   .forEach((button) => {
@@ -87,6 +86,20 @@ document.querySelectorAll('.js-add-to-cart')
 
       const addedMessage = document.querySelector(`.js-added-to-cart-${productId}`);
       addedMessage.classList.add('added-to-cart-visible');
+
+      // Clear the previous timeout if it exists
+      const previousTimeoutId = addedMessageTimeouts[productId];
+      if (previousTimeoutId) {
+        clearTimeout(previousTimeoutId);
+      }
+
+      // Set a new timeout to remove the visible class
+      const timeoutId = setTimeout(() => {
+        addedMessage.classList.remove('added-to-cart-visible');
+      }, 2000);
+
+      // Store the new timeout ID in the map
+      addedMessageTimeouts[productId] = timeoutId;
 
       updateCartQuantity();
     });

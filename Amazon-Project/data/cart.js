@@ -29,10 +29,7 @@ export function addToCart(productId) {
   if(matchingItem) {
     matchingItem.quantity += quantity;
   } else {
-    cart.push({
-      productId: productId,
-      quantity: quantity
-    });     
+    cart.push({ productId, quantity });     
   }
 
   saveToStorage();

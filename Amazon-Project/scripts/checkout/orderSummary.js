@@ -11,13 +11,11 @@ import { formatCurrency } from '../utils/money.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import { deliveryOptions, getDeliveryOption } from '../../data/deliveryOptions.js'
 import { renderPaymentSummary } from './paymentSummary.js';
+import { renderCheckoutHeader } from './checkoutHeader.js';
 
-// Putting all of our code into a function so we use refresh it when we need to. 
-// Instead of using the DOM to update the HTML, we're using MVC.
+
+
 export function renderOrderSummary() {
-  // Show the total quantity of items in the cart at the top
-  updateCartQuantity();
-
   // Initialize HTML string for the cart items
   let cartSummaryHTML = '';
 
@@ -146,17 +144,11 @@ export function renderOrderSummary() {
       const { productId } = link.dataset;
       removeFromCart(productId); // Remove item from cart
 
+      renderCheckoutHeader();
       renderOrderSummary(); // Update order summary with MVC
-      updateCartQuantity(); // Update cart quantity display
       renderPaymentSummary(); // Update payment page with MVC
     });
   });
-
-  // Function to update the displayed cart quantity at the top
-  function updateCartQuantity() {
-    const cartQuantity = calculateCartQuantity();
-    document.querySelector('.js-return-to-home-link').innerHTML = `${cartQuantity} Items`;
-  }
 
   // Add event listeners to each "Update" link to show quantity input
   document.querySelectorAll('.js-update-link').forEach((link) => {
@@ -188,19 +180,20 @@ export function renderOrderSummary() {
       const quantityLabel = document.querySelector(`.js-quantity-label-${productId}`);
       quantityLabel.innerHTML = newQuantity; // Update quantity display
 
-      updateCartQuantity(); // Update cart quantity display at the top
-
-      renderPaymentSummary();
-    });
-  });
-
-  document.querySelectorAll('.js-delivery-option').forEach((element) => {
-    element.addEventListener('click', () => {
-      const { productId, deliveryOptionId } = element.dataset;
-      updateDeliveryOption(productId, deliveryOptionId)
+      renderCheckoutHeader();
       renderOrderSummary();
       renderPaymentSummary();
     });
   });
-};
+
+  document.querySelectorAll('.js-delivery-option')
+    .forEach((element) => {
+      element.addEventListener('click', () => {
+        const { productId, deliveryOptionId } = element.dataset;
+        updateDeliveryOption(productId, deliveryOptionId)
+        renderOrderSummary();
+        renderPaymentSummary();
+      });
+    });
+  };
 

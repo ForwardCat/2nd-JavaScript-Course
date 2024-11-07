@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="module">    
+
+    import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
+
+    const today = dayjs();
+
+    // 15a
+
+    const targetDate = today.add(5, 'days');
+    
+    const date = targetDate.format('MMMM, D');
+    console.log(date);
+
+    // 15b
+
+    const oneMonthLaterDate = today.add(1, 'month')
+
+    const oneMonthLater = oneMonthLaterDate.format('MMMM, D');
+    console.log(oneMonthLater);
+
+    // 15c 
+
+    const oneMonthBeforeDate = today.subtract(1, 'month')
+
+    const oneMonthBefore = oneMonthBeforeDate.format('MMMM, D');
+    console.log(oneMonthBefore);
+
+    // 15d
+
+    const weekDay = today.format('dddd');
+    console.log(weekDay);
+
+    // 15e 
+
+    import isSatSun from './isWeekend-function.js'
+
+    console.log(isSatSun(weekDay));
+  </script>
+</body>
+</html>

@@ -8,8 +8,6 @@ import {
 } from '../../data/cart.js';
 import { products, getProduct } from '../../data/products.js';
 import { formatCurrency } from '../utils/money.js';
-import { hello } from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js';
-// THis is a default, its a simplier syntax, but a page can only have one default export.
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import { deliveryOptions, getDeliveryOption } from '../../data/deliveryOptions.js'
 import { renderPaymentSummary } from './paymentSummary.js';

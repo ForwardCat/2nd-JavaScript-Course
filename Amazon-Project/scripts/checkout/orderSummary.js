@@ -12,17 +12,7 @@ import { hello } from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js';
 // THis is a default, its a simplier syntax, but a page can only have one default export.
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import { deliveryOptions, getDeliveryOption } from '../../data/deliveryOptions.js'
-
-// external library
-hello();
-
-// This is an external library called dayJS
-// helps us figure out the date of today
-const today = dayjs();
-// variable.add() is a method to add days onto today
-const deliverDate = today.add(7, 'days');
-// this tells dayJS how we want to format the date
-console.log(deliverDate.format('dddd, D MMMM'));
+import { renderPaymentSummary } from './paymentSummary.js';
 
 export function renderOrderSummary() {
   // Show the total quantity of items in the cart at the top
@@ -153,6 +143,8 @@ export function renderOrderSummary() {
       container.remove(); // Remove item from HTML
 
       updateCartQuantity(); // Update cart quantity display
+
+      renderPaymentSummary();
     });
   });
 
@@ -193,6 +185,8 @@ export function renderOrderSummary() {
       quantityLabel.innerHTML = newQuantity; // Update quantity display
 
       updateCartQuantity(); // Update cart quantity display at the top
+
+      renderPaymentSummary();
     });
   });
 
@@ -201,6 +195,7 @@ export function renderOrderSummary() {
       const { productId, deliveryOptionId } = element.dataset;
       updateDeliveryOption(productId, deliveryOptionId)
       renderOrderSummary();
+      renderPaymentSummary();
     });
   });
 };

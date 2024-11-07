@@ -25,6 +25,13 @@ export function renderOrderSummary() {
   cart.forEach((cartItem) => {
     const productId = cartItem.productId;
 
+    // Added this myself
+    // if there is no deliveryOption currently selected, default to the free option.
+    if (!cartItem.deliveryOptionId) {
+      cartItem.deliveryOptionId = deliveryOptions[0].id;
+      updateDeliveryOption(cartItem.productId, cartItem.deliveryOptionId)
+    }
+
     // Find the product details that match the cart item
     const matchingProduct = getProduct(productId)
 

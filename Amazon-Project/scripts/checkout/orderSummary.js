@@ -1,4 +1,4 @@
-// Import functions and data needed for the cart
+// Import functions and data for our order summary page
 import {
   cart, 
   removeFromCart, 
@@ -12,6 +12,8 @@ import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import { deliveryOptions, getDeliveryOption } from '../../data/deliveryOptions.js'
 import { renderPaymentSummary } from './paymentSummary.js';
 
+// Putting all of our code into a function so we use refresh it when we need to. 
+// Instead of using the DOM to update the HTML, we're using MVC.
 export function renderOrderSummary() {
   // Show the total quantity of items in the cart at the top
   updateCartQuantity();
@@ -137,12 +139,9 @@ export function renderOrderSummary() {
       const { productId } = link.dataset;
       removeFromCart(productId); // Remove item from cart
 
-      const container = document.querySelector(`.js-cart-item-container-${productId}`);
-      container.remove(); // Remove item from HTML
-
+      renderOrderSummary(); // Update order summary with MVC
       updateCartQuantity(); // Update cart quantity display
-
-      renderPaymentSummary();
+      renderPaymentSummary(); // Update payment page with MVC
     });
   });
 

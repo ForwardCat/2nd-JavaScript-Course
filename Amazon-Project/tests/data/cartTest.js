@@ -4,12 +4,14 @@ import {addToCart, cart, loadFromStorage} from '../../data/cart.js';
 // Define a test suite for the addToCart function
 describe('test suite: addToCart', () => { 
   
+  beforeEach(() => {
+    spyOn(localStorage, 'setItem'); // Mock localStorage.setItem to observe when it's called
+  });
+
   // First Test
 
   it('adds an existing product to the cart', () => {
-    // Test case: adding a product that is already in the cart should increase its quantity
     
-    spyOn(localStorage, 'setItem'); // Mock localStorage.setItem to observe when it's called
     spyOn(localStorage, 'getItem').and.callFake(() => {
       // Mock localStorage.getItem to return a predefined cart with one item
       return JSON.stringify([{
@@ -39,9 +41,7 @@ describe('test suite: addToCart', () => {
   // Second Test
 
   it('adds a new product to the cart', () => {
-    // Test case: adding a new product that is not currently in the cart
     
-    spyOn(localStorage, 'setItem'); // Mock localStorage.setItem to observe when it's called
     spyOn(localStorage, 'getItem').and.callFake(() => {
       // Mock localStorage.getItem to return an empty cart
       return JSON.stringify([]);

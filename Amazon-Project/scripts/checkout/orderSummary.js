@@ -50,7 +50,11 @@ export function renderOrderSummary() {
 
     // Add HTML for each cart item, including details like image, name, price, and quantity controls
     cartSummaryHTML += `
-      <div class="cart-item-container js-cart-item-container js-cart-item-container-${matchingProduct.id}">
+      <div class="
+        cart-item-container 
+        js-cart-item-container 
+        js-cart-item-container-${matchingProduct.id}">
+        
         <div class="delivery-date">
           Delivery date: ${dateString}
         </div>

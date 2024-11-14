@@ -3,18 +3,18 @@ import { validDeliveryOption } from './deliveryOptions.js';
 // a class is an object generator
 class Cart {
   cartItems;
-  localStorageKey;
+  #localStorageKey; // this is a private property
 
   // the constructor is where we put our setup code for the class
   constructor(localStorageKey) {
     // set the localStorageKey
-    this.localStorageKey = localStorageKey;
+    this.#localStorageKey = localStorageKey;
     // load from localStorage
-    this.loadFromStorage();
+    this.#loadFromStorage(); // this is a private method
   }
 
-  loadFromStorage() {
-    this.cartItems = JSON.parse(localStorage.getItem(this.localStorageKey));
+  #loadFromStorage() {
+    this.cartItems = JSON.parse(localStorage.getItem(this.#localStorageKey));
   
     if (!this.cartItems) {
       this.cartItems = [{
@@ -30,7 +30,7 @@ class Cart {
   }
 
   saveToStorage() {
-    localStorage.setItem(this.localStorageKey, JSON.stringify(this.cartItems))
+    localStorage.setItem(this.#localStorageKey, JSON.stringify(this.cartItems))
   }
 
   addToCart(productId) {
@@ -114,7 +114,7 @@ class Cart {
       
     saveToStorage();
   }
-};
+}
 
 // 'new' generates a new object using the class 'Cart'
 // an object created by a class is called an 'instance'

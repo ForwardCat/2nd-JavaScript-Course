@@ -1,16 +1,20 @@
 import { validDeliveryOption } from './deliveryOptions.js';
 
+// a class is an object generator
 class Cart {
   cartItems;
-  #localStorageKey;
+  localStorageKey;
 
+  // the constructor is where we put our setup code for the class
   constructor(localStorageKey) {
-    this.#localStorageKey = localStorageKey;
-    this.#loadFromStorage();
+    // set the localStorageKey
+    this.localStorageKey = localStorageKey;
+    // load from localStorage
+    this.loadFromStorage();
   }
 
-  #loadFromStorage() {
-    this.cartItems = JSON.parse(localStorage.getItem(this.#localStorageKey));
+  loadFromStorage() {
+    this.cartItems = JSON.parse(localStorage.getItem(this.localStorageKey));
   
     if (!this.cartItems) {
       this.cartItems = [{
@@ -26,7 +30,7 @@ class Cart {
   }
 
   saveToStorage() {
-    localStorage.setItem(this.#localStorageKey, JSON.stringify(this.cartItems));
+    localStorage.setItem(this.localStorageKey, JSON.stringify(this.cartItems))
   }
 
   addToCart(productId) {
@@ -108,13 +112,18 @@ class Cart {
     });   
     matchingItem.quantity = newQuantity;
       
-    this.saveToStorage();
+    saveToStorage();
   }
-}
+};
 
+// 'new' generates a new object using the class 'Cart'
+// an object created by a class is called an 'instance'
 const cart = new Cart('cart-oop');
-const businessCart = new Cart('cart-business');
+const businessCart = new Cart('business-cart');
 
 console.log(cart);
 console.log(businessCart);
+
+// checking if this object is generated from this class
+// AKA if its an instance of the Cart Class
 console.log(businessCart instanceof Cart);

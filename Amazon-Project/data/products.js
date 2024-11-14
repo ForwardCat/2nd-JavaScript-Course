@@ -60,6 +60,41 @@ class Clothing extends Product {
   }
 }
 
+// This is the built in Date class 
+// Dayjs is more commonly used because it has more features
+/*
+const date = new Date();
+console.log(date);
+console.log(date.toLocaleTimeString());
+*/
+
+/*
+console.log(this); //output: undefined 
+
+const object2 = {
+  a: 2,
+  b: this.a //output: undefined
+}
+*/
+
+/*
+function logThis() {
+  console.log(this); //output: undefined
+};
+logThis();
+// .call allows us to define 'this' inside a function
+logThis.call('hello'); //output: hello
+
+// arrow functions do not change the value of 'this'
+// 'this' keeps the value that it had outside the arrow function
+const object3 = {
+  method: () => {
+    console.log(this); //output: undefined
+  }
+};
+object3.method();
+*/
+
 export const products = [
   {
     id: "0001",

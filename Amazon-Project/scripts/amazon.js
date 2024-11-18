@@ -1,111 +1,108 @@
 // getting variable out of module
-import { cart, addToCart, calculateCartQuantity } from '../data/cart.js';
-import { products, loadProducts } from '../data/products.js';
+import {cart, addToCart, calculateCartQuantity} from '../data/cart.js';
+import {products} from '../data/products.js';
 import { formatCurrency } from './utils/money.js';
 
-loadProducts(renderProductsGrid);
 
-function renderProductsGrid() {
-  // data of product
-  // this is called a data structure
-  let productsHTML = '';
+// data of product
+// this is called a data structure
+let productsHTML = '';
 
-  // generating HTML
-  products.forEach((product) => {
-    productsHTML += `
-      <div class="product-container">
-      <div class="product-image-container">
-        <img class="product-image"
-          src="${product.image}">
-      </div>
-
-      <div class="product-name limit-text-to-2-lines">
-        ${product.name}
-      </div>
-
-      <div class="product-rating-container">
-        <img class="product-rating-stars"
-          src="${product.getStarsUrl()}">
-        <div class="product-rating-count link-primary">
-          ${product.rating.count}
-        </div>
-      </div>
-
-      <div class="product-price">
-        ${product.getPrice()}
-      </div>
-
-      <div class="product-quantity-container">
-        <select class="js-quantity-selector-${product.id}">
-          <option selected value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-        </select>
-      </div>
-
-      ${product.extraInfoHTML()}
-
-      <div class="product-spacer"></div>
-
-      <div class="added-to-cart js-added-to-cart-${product.id}">
-        <img src="images/icons/checkmark.png">
-        Added
-      </div>
-
-      <button class="add-to-cart-button button-primary js-add-to-cart"
-      data-product-id="${product.id}">
-        Add to Cart
-      </button>
+// generating HTML
+products.forEach((product) => {
+  productsHTML += `
+    <div class="product-container">
+    <div class="product-image-container">
+      <img class="product-image"
+        src="${product.image}">
     </div>
-    `;
-  });
 
-  document.querySelector('.js-products-grid')
-    .innerHTML = productsHTML;
+    <div class="product-name limit-text-to-2-lines">
+      ${product.name}
+    </div>
 
-  function updateCartQuantity() {
-    const cartQuantity = calculateCartQuantity();
+    <div class="product-rating-container">
+      <img class="product-rating-stars"
+        src="${product.getStarsUrl()}">
+      <div class="product-rating-count link-primary">
+        ${product.rating.count}
+      </div>
+    </div>
 
-    document.querySelector('.js-cart-quantity')
-      .innerHTML = cartQuantity;
-  }
+    <div class="product-price">
+      ${product.getPrice()}
+    </div>
 
-  updateCartQuantity();
+    <div class="product-quantity-container">
+      <select class="js-quantity-selector-${product.id}">
+        <option selected value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+    </div>
 
-  // Define addedMessageTimeouts outside the event listener
-  const addedMessageTimeouts = {};
+    ${product.extraInfoHTML()}
 
-  document.querySelectorAll('.js-add-to-cart')
-    .forEach((button) => {
-      button.addEventListener('click', () => {
-        const { productId } = button.dataset;
-        addToCart(productId);
+    <div class="product-spacer"></div>
 
-        const addedMessage = document.querySelector(`.js-added-to-cart-${productId}`);
-        addedMessage.classList.add('added-to-cart-visible');
+    <div class="added-to-cart js-added-to-cart-${product.id}">
+      <img src="images/icons/checkmark.png">
+      Added
+    </div>
 
-        // Clear the previous timeout if it exists
-        const previousTimeoutId = addedMessageTimeouts[productId];
-        if (previousTimeoutId) {
-          clearTimeout(previousTimeoutId);
-        }
+    <button class="add-to-cart-button button-primary js-add-to-cart"
+    data-product-id="${product.id}">
+      Add to Cart
+    </button>
+  </div>
+  `;
+});
 
-        // Set a new timeout to remove the visible class
-        const timeoutId = setTimeout(() => {
-          addedMessage.classList.remove('added-to-cart-visible');
-        }, 2000);
+document.querySelector('.js-products-grid')
+  .innerHTML = productsHTML;
 
-        // Store the new timeout ID in the map
-        addedMessageTimeouts[productId] = timeoutId;
+function updateCartQuantity() {
+  const cartQuantity = calculateCartQuantity();
 
-        updateCartQuantity();
-      });
-    });
+  document.querySelector('.js-cart-quantity')
+    .innerHTML = cartQuantity;
 }
+
+updateCartQuantity();
+
+// Define addedMessageTimeouts outside the event listener
+const addedMessageTimeouts = {};
+
+document.querySelectorAll('.js-add-to-cart')
+  .forEach((button) => {
+    button.addEventListener('click', () => {
+      const { productId } = button.dataset;
+      addToCart(productId);
+
+      const addedMessage = document.querySelector(`.js-added-to-cart-${productId}`);
+      addedMessage.classList.add('added-to-cart-visible');
+
+      // Clear the previous timeout if it exists
+      const previousTimeoutId = addedMessageTimeouts[productId];
+      if (previousTimeoutId) {
+        clearTimeout(previousTimeoutId);
+      }
+
+      // Set a new timeout to remove the visible class
+      const timeoutId = setTimeout(() => {
+        addedMessage.classList.remove('added-to-cart-visible');
+      }, 2000);
+
+      // Store the new timeout ID in the map
+      addedMessageTimeouts[productId] = timeoutId;
+
+      updateCartQuantity();
+    });
+  });

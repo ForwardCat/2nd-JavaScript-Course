@@ -113,59 +113,6 @@ const object3 = {
 object3.method();
 */
 
-export let products = [];
-
-export function loadProductsFetch() {
-  // fetch is a built in function that makes a HTTP request
-  // fetch will by default make a GET request
-  const promise = fetch('https://supersimplebackend.dev/products').then((response) => {
-    return response.json()
-  }).then((productsData) => {
-    products = productsData.map((productDetails) => {
-      if (productDetails.type === 'clothing') {
-        return new Clothing(productDetails);
-      } else if (productDetails.type === 'appliances') {
-        return new Appliances(productDetails);
-      }
-      return new Product(productDetails);
-    });
-
-    console.log('load products');
-  });
-
-  return promise;
-}
-/*
-loadProductsFetch().then(() => {
-  console.log('next step');
-});
-*/
-
-
-// load products from backend
-export function loadProducts(fun) {
-  const xhr = new XMLHttpRequest();
-
-  xhr.addEventListener('load', () => {
-    products = JSON.parse(xhr.response).map((productDetails) => {
-      if (productDetails.type === 'clothing') {
-        return new Clothing(productDetails);
-      } else if (productDetails.type === 'appliances') {
-        return new Appliances(productDetails);
-      }
-      return new Product(productDetails);
-    });
-
-    console.log('load products');
-
-    fun();
-  });
-
-  xhr.open('GET', 'https://supersimplebackend.dev/products');
-  xhr.send();
-}
-
-/*
 export const products = [
   {
     id: "0001",
@@ -874,4 +821,3 @@ export const products = [
   }
   return new Product(productDetails);
 });
-*/
